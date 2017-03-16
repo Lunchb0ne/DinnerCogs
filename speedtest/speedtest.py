@@ -1,7 +1,6 @@
 import discord
 from .utils.dataIO import dataIO
 from .utils import checks
-from cogs.utils.chat_formatting import escape_mass_mentions, box
 import asyncio
 import re
 import os
@@ -105,8 +104,8 @@ def check_file():
     data = {}
     f = "data/speedtest/settings.json"
     if not dataIO.is_valid_json(f):
-		await self.bot.say("Creating data/account/settings.json")
-        print("Creating data/account/settings.json")
+		await self.bot.say("Creating data/speedtest/settings.json")
+        print("Creating data/speedtest/settings.json")
         dataIO.save_json(f, data)
 
 
