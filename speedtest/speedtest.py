@@ -96,7 +96,6 @@ class speedtest:
                 await self.bot.say(embed=embed2)   
 def check_folder():
     if not os.path.exists("data/speedtest"):
-        await self.bot.say("Creating data/speedtest folder")
         print("Creating data/speedtest folder")
         os.makedirs("data/speedtest")
 
@@ -104,7 +103,6 @@ def check_file():
     data = {}
     f = "data/speedtest/settings.json"
     if not dataIO.is_valid_json(f):
-        await self.bot.say("Creating data/speedtest/settings.json")
         print("Creating data/speedtest/settings.json")
         dataIO.save_json(f, data)
 
