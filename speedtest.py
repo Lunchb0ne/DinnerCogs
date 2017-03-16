@@ -63,7 +63,7 @@ class speedtest:
             await self.bot.say(embed=embed)
             await self.bot.delete_message(message12)
         except KeyError:
-            await self.bot.say('Please setup the speedtest cogs using [p]parameters')
+            await self.bot.say('Please setup the speedtest cogs using {}parameters'.format(ctx.prefix))
     @commands.command(pass_context=True)
     async def parameters(self, ctx, high : float,low : float, units='bits'):
         ''' Settings of the speedtest cog, 
@@ -114,4 +114,4 @@ def setup(bot):
     if module_avail == True:
         bot.add_cog(speedtest(bot))
     else:
-        raise RuntimeError("You need to run 'pip3 install speedtest-cli'")
+        raise RuntimeError("You need to run `pip3 install speedtest-cli`")
