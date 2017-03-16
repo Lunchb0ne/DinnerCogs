@@ -65,7 +65,7 @@ class speedtest:
         except KeyError:
             await self.bot.say('Please setup the speedtest cogs using {}parameters'.format(ctx.prefix))
     @commands.command(pass_context=True)
-    async def parameters(self, ctx, high : float,low : float, units='bits'):
+    async def parameters(self, ctx, high : int,low : int, units='bits'):
         ''' Settings of the speedtest cog, 
         High stands for the value above which your download is considered fast
         Low  stands for the value above which your download is considered Slow
@@ -97,6 +97,7 @@ class speedtest:
                 await self.bot.say(embed=embed2)   
 def check_folder():
     if not os.path.exists("data/speedtest"):
+		await self.bot.say("Creating data/speedtest folder")
         print("Creating data/speedtest folder")
         os.makedirs("data/speedtest")
 
@@ -104,6 +105,7 @@ def check_file():
     data = {}
     f = "data/speedtest/settings.json"
     if not dataIO.is_valid_json(f):
+		await self.bot.say("Creating data/account/settings.json")
         print("Creating data/account/settings.json")
         dataIO.save_json(f, data)
 
