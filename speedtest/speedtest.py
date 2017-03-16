@@ -80,8 +80,6 @@ class speedtest:
             else:
                 self.settings[server.id].update({'data_type' : '0.125'})
                 dataIO.save_json(self.filepath, self.settings)
-        elif not units.lower() in unitz:
-            await self.bot.say('Invalid Units Input')
             if float(high) < float(low):
                 await self.bot.say('Error High is less that low')
             else:    
@@ -93,7 +91,9 @@ class speedtest:
                 embed2.add_field(name = 'High',value='{}'.format(high))
                 embed2.add_field(name = 'Low',value='{}'.format(low))
                 embed2.add_field(name = 'Units',value='mega{}/s'.format(units))
-                await self.bot.say(embed=embed2)   
+                await self.bot.say(embed=embed2)                
+        elif not units.lower() in unitz:
+            await self.bot.say('Invalid Units Input') 
 def check_folder():
     if not os.path.exists("data/speedtest"):
         print("Creating data/speedtest folder")
