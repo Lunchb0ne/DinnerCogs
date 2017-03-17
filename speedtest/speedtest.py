@@ -29,9 +29,9 @@ class speedtest:
             author = ctx.message.author
             server = author.server
             user = author  
-            high = self.settings[user.id]['upperbound']
-            low = self.settings[user.id]['lowerbound']
-            multiplyer = (self.settings[user.id]['data_type'])
+            high = self.settings[author.id]['upperbound']
+            low = self.settings[author.id]['lowerbound']
+            multiplyer = (self.settings[author.id]['data_type'])
             message12 = await self.bot.say(" :stopwatch: **Running speedtest. This may take a while!** :stopwatch:")        
             DOWNLOAD_RE = re.compile(r"Download: ([\d.]+) .bit")
             UPLOAD_RE = re.compile(r"Upload: ([\d.]+) .bit")
@@ -71,20 +71,20 @@ class speedtest:
         units stands for units of measurement of speed, either megaBITS/s or megaBYTES/s (By default it is megaBITS/s)''' 
         author = ctx.message.author
         server = author.server
-        self.settings[user.id] = {}
+        self.settings[author.id] = {}
         unitz = ['bits','bytes']
         if units.lower() in unitz:
             if units == 'bits':
-                self.settings[user.id].update({'data_type' : '1'})
+                self.settings[author.id].update({'data_type' : '1'})
                 dataIO.save_json(self.filepath, self.settings)
             else:
-                self.settings[user.id].update({'data_type' : '0.125'})
+                self.settings[author.id].update({'data_type' : '0.125'})
                 dataIO.save_json(self.filepath, self.settings)
             if float(high) < float(low):
                 await self.bot.say('Error High is less that low')
             else:    
-                self.settings[user.id].update({'upperbound' : high})
-                self.settings[user.id].update({'lowerbound' : low})
+                self.settings[author.id].update({'upperbound' : high})
+                self.settings[author.id].update({'lowerbound' : low})
                 dataIO.save_json(self.filepath, self.settings)
                 embed2 = discord.Embed(colour=0x45FF00,descriprion = 'These are your settings')
                 embed2.title = 'Speedtest settings'
