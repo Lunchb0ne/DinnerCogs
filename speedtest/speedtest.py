@@ -27,7 +27,6 @@ class speedtest:
         try:
             channel = ctx.message.channel
             author = ctx.message.author
-            server = author.server
             user = author  
             high = self.settings[author.id]['upperbound']
             low = self.settings[author.id]['lowerbound']
@@ -70,7 +69,6 @@ class speedtest:
         Low  stands for the value above which your download is considered Slow
         units stands for units of measurement of speed, either megaBITS/s or megaBYTES/s (By default it is megaBITS/s)''' 
         author = ctx.message.author
-        server = author.server
         self.settings[author.id] = {}
         unitz = ['bits','bytes']
         if units.lower() in unitz:
