@@ -22,16 +22,16 @@ class speedtest:
         self.filepath = "data/speedtest/settings.json"
         self.settings = dataIO.load_json(self.filepath)
     
-    @commands.command(pass_context=True)
+    @commands.command(pass_context=True,no_pm=False)
     async def speedtest(self, ctx):
         try:
             channel = ctx.message.channel
             author = ctx.message.author
             server = author.server
             user = author  
-            high = self.settings[server.id]['upperbound']
-            low = self.settings[server.id]['lowerbound']
-            multiplyer = (self.settings[server.id]['data_type'])
+            high = self.settings[user.id]['upperbound']
+            low = self.settings[user.id]['lowerbound']
+            multiplyer = (self.settings[user.id]['data_type'])
             message12 = await self.bot.say(" :stopwatch: **Running speedtest. This may take a while!** :stopwatch:")        
             DOWNLOAD_RE = re.compile(r"Download: ([\d.]+) .bit")
             UPLOAD_RE = re.compile(r"Upload: ([\d.]+) .bit")
@@ -63,7 +63,7 @@ class speedtest:
             await self.bot.delete_message(message12)
         except KeyError:
             await self.bot.say('Please setup the speedtest cogs using {}parameters'.format(ctx.prefix))
-    @commands.command(pass_context=True)
+    @commands.command(pass_context=True,no_pm=False)
     async def parameters(self, ctx, high : int,low : int, units='bits'):
         ''' Settings of the speedtest cog, 
         High stands for the value above which your download is considered fast
@@ -71,20 +71,20 @@ class speedtest:
         units stands for units of measurement of speed, either megaBITS/s or megaBYTES/s (By default it is megaBITS/s)''' 
         author = ctx.message.author
         server = author.server
-        self.settings[server.id] = {}
+        self.settings[user.id] = {}
         unitz = ['bits','bytes']
         if units.lower() in unitz:
             if units == 'bits':
-                self.settings[server.id].update({'data_type' : '1'})
+                self.settings[user.id].update({'data_type' : '1'})
                 dataIO.save_json(self.filepath, self.settings)
             else:
-                self.settings[server.id].update({'data_type' : '0.125'})
+                self.settings[user.id].update({'data_type' : '0.125'})
                 dataIO.save_json(self.filepath, self.settings)
             if float(high) < float(low):
                 await self.bot.say('Error High is less that low')
             else:    
-                self.settings[server.id].update({'upperbound' : high})
-                self.settings[server.id].update({'lowerbound' : low})
+                self.settings[user.id].update({'upperbound' : high})
+                self.settings[user.id].update({'lowerbound' : low})
                 dataIO.save_json(self.filepath, self.settings)
                 embed2 = discord.Embed(colour=0x45FF00,descriprion = 'These are your settings')
                 embed2.title = 'Speedtest settings'
