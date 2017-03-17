@@ -4,5 +4,5 @@
     "NAME" : "dinnerCogs",
     "SHORT" : "Speedtest, speedtest and more speedtest",
     "DESCRIPTION" : "Services like testing your bot's server's speedtest ."
-	"TAGS": ["utility", "tools"]
+    "TAGS": ["utility", "tools"]
 }
