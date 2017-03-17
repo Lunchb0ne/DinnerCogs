@@ -59,9 +59,8 @@ class speedtest:
             embed.add_field(name=' Ping',value=message_ping)
             embed.set_footer(text='Your internet is pretty {}'.format(indicator)) 
             await self.bot.say(embed=embed)
-            await self.bot.delete_message(message12)
         except KeyError:
-            await self.bot.say('Please setup the speedtest cogs using {}parameters'.format(ctx.prefix))
+            await self.bot.say('Please setup the speedtest cogs using **{}parameters**'.format(ctx.prefix))
     @commands.command(pass_context=True,no_pm=False)
     async def parameters(self, ctx, high : int,low : int, units='bits'):
         ''' Settings of the speedtest cog, 
@@ -91,7 +90,7 @@ class speedtest:
                 embed2.add_field(name = 'Units',value='mega{}/s'.format(units))
                 await self.bot.say(embed=embed2)                
         elif not units.lower() in unitz:
-            await self.bot.say('Invalid Units Input') 
+            await self.bot.say('Invalid Units Input')
 def check_folder():
     if not os.path.exists("data/speedtest"):
         print("Creating data/speedtest folder")
