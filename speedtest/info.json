@@ -3,5 +3,6 @@
     "INSTALL_MSG" : "Thanks for downloading",
     "NAME" : "DinnerCogs",
     "SHORT" : "idk what to put here",
-    "DESCRIPTION" : "Speedtest cog.. nothing much"
+    "DESCRIPTION" : "Speedtest cog, use [p]parameters to setup the speedtest settings".,
+    "TAGS" : ["utility", "tools"]
 }
