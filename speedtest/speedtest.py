@@ -57,10 +57,10 @@ class speedtest:
             embed.add_field(name='Download', value=message_down)
             embed.add_field(name=' Upload',value=message_up)
             embed.add_field(name=' Ping',value=message_ping)
-            embed.set_footer(text='Your internet is pretty {}'.format(indicator)) 
+            embed.set_footer(text='The Bots internet is pretty {}'.format(indicator)) 
             await self.bot.say(embed=embed)
         except KeyError:
-            await self.bot.say('Please setup the speedtest cogs using **{}parameters**'.format(ctx.prefix))
+            await self.bot.say('Please setup the speedtest settings using **{}parameters**'.format(ctx.prefix))
     @commands.command(pass_context=True,no_pm=False)
     async def parameters(self, ctx, high : int,low : int, units='bits'):
         ''' Settings of the speedtest cog, 
